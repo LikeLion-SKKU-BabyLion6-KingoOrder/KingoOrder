@@ -2,10 +2,10 @@
   "name": "boiler-plate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./server/index",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node ./server/index",
+    "dev": "nodemon ./server/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "juyeong",
