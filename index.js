@@ -46,38 +46,35 @@ app.post('/api/users/register', async (req, res) => {
 });
 
 
-app.post('/api/users/login',(req, res) =>{
-    // 요청된 이메일을 데이터베이스 찾기
-    User.findOne({email: req.body.email})
-    .then(docs=>{
-        if(!docs){
-            return res.json({
-                loginSuccess: false,
-                messsage: "Try another E-mail"})
-        }
-        // 비밀번호 맞는지 비교하기 (comparePassword 메서드 만들기)
-        docs.comparePassword(req.body.password, (err, isMatch) => {
-            if(!isMatch) return res.json({
-                loginSuccess: false, 
-                messsage: "Wrong Password"});
-            
-            // Password가 일치하다면 토큰 생성
-            docs.generateToken((err, user)=>{
-                if(err) return res.status(400).send(err);
-                // console.log('test');
+app.post('/api/users/login', async (req, res) => {    
+    try { //요청된 이메일이 DB에 있는지 찾기 
+        const user = await User.findOne({email: req.body.email});
+        if (!user) return res.json({
+            loginSuccess: false,
+            message: 'Try another E-mail'})
                 
-                // 토큰을 저장
+        //요청된 이메일이 DB에 있다면 비밀번호 확인
+        const isMatch = await user.comparePassword(req.body.password, 
+            async (err, isMatch) => {
+            if (!isMatch) return res.json({
+                loginSuccess: false,
+                message: "Wrong Password"})
+            
+            //비밀번호 까지 맞다면 토큰을 생성하기.
+            const token = await user.generateToken((err, user) => {
                 res.cookie("x_auth", user.token)
                 .status(200)
-                .json({loginSuccess: true, 
-                    userId: user._id})
+                .json({ 
+                    loginSuccess: true, 
+                    message: `${user.email} 로그인 되었습니다.`,
+                    userId: user._id })
             })
-        })
-    })
-    .catch((err)=>{
-        return res.status(400).send(err);
-    })
+        })  
+    }
+    catch (err) { return res.status(400).send(err); 
+    }
 })
+
 
 app.get('/api/users/auth', auth, (req, res) => {
 
@@ -91,13 +88,26 @@ app.get('/api/users/auth', auth, (req, res) => {
         email: req.user.email,
         name: req.user.name,
         lastname: req.user.lastname,
-        role: req.user,role,
+        role: req.user.role,
         image: req.user.image
-    
-    // 이렇게 정보를 주면 어떤 페이지에서든 유저 정보를 이용할 수 있기 때문에 편해진다.
+
+        // 이렇게 정보를 주면 어떤 페이지에서든 유저 정보를 이용할 수 있기 때문에 편해진다.
     })
 })
 
+
+app.get('/api/users/logout', auth, (req, res) => { // 로그인된 상태이므로 auth 미들웨어 포함됨
+
+    User.findOneAndUpdate({ _id: req.user._id },
+        { token: "" }) // 토큰 지워주기 
+        .then(function (user) {
+            return res.status(200).send({ success: true,
+            message: `${user.email} 로그아웃 되었습니다.` })
+        })
+        .catch(function (err) {
+            return res.json({ success: false, err });
+        });
+})
 
 
 
@@ -105,7 +115,7 @@ app.get('/api/users/auth', auth, (req, res) => {
 // 이 코드를 실행하면 웹 브라우저에서 http://localhost:port 에 접속할 수 있다.
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
-}); 
+});
 
 
 

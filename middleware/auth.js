@@ -15,8 +15,7 @@ let auth = (req, res, next) => { // 인증 처리 하는 곳
         if(!user) return res.json({isAuth: false, error: true}); 
 
         // 유저가 있다면 (인증 OK)
-        // 리퀘스트에 토큰, 유저를 넣는 이유는
-        // index.js에서 req.user와 req.user를 통해 바로 token과 user를 받을 수 있도록하는 거임
+        // 리퀘스트에 토큰, 유저를 넣는 이유는 index.js에서 req.user와 req.user를 통해 바로 token과 user를 받을 수 있도록하기 위함
         req.token = token;
         req.user = user;
         next(); // 미들웨어에서 (req, res) 인자로 넘어갈 수 있도록
