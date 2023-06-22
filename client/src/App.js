@@ -14,9 +14,18 @@ import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 
+
 function App() {
   return (
     <Router>
+      <div>
+        <ul> 
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">로그인 페이지</Link></li>
+          <li><Link to="/register">회원가입 페이지</Link></li>
+        </ul>
+      </div>
+      
       <div>
         <Routes>
           <Route exact path="/" element = {<LandingPage />} />

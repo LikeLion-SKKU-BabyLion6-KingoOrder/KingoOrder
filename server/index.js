@@ -1,7 +1,7 @@
 // 기본설정
 const express = require('express'); // express 모듈 가져오기
 const app = express(); // function을 이용해서 새로운 express app 만들기
-const port = 3000; // 포트는 아무거나 해도 됨
+const port = 4000; // 포트는 아무거나 해도 됨 (부딪히지 않으면)
 
 // 옵션 추가
 const config = require('./config/key'); //key에서 상황을 받아오기 위해
@@ -25,13 +25,10 @@ mongoose.connect(config.mongoURI, { // 비밀정보 보호 - key.js의 mongoURI�
     .catch(err => console.log(err)); // 에러가 뜨면 그것도 알려주도록 설정
 
 
-app.get('/', (req, res) => res.send('헬로 월드!'));
+app.get('/api/hello', (req, res) => res.send('헬로 월드!'));
 
-app.get('/api/hello', (req,res) => {
-    // 원래는 여기서 작업 수행한 후에 response
-    
-    res.send('안녕하세요~');
-})
+app.get('/', (req,res) => res.send('axios 테스트~'));
+
 
 app.get('/api/users/register', (req, res) => res.send(requireTest.registerHello));
 app.get('/api/users/login', (req, res) => res.send('Login here!'));
