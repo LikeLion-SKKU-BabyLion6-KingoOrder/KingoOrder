@@ -20,14 +20,15 @@ app.use(cookieParser()); // cookie-parser 사용 등록
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, { // 비밀정보 보호 - key.js의 mongoURI로 대체
     // 에러 방지를 위해 아래줄 추가
-    useNewUrlParser: true, useUnifiedTopology: true})
+    useNewUrlParser: true, useUnifiedTopology: true
+})
     .then(() => console.log('Mongo DB Connected...')) // 잘 연결됐는지 확인하기 위해 추가
     .catch(err => console.log(err)); // 에러가 뜨면 그것도 알려주도록 설정
 
 
-app.get('/api/hello', (req, res) => res.send('헬로 월드!'));
+app.get('/api/hello', (req, res) => res.send('헬로 월드! axios axios'));
 
-app.get('/', (req,res) => res.send('axios 테스트~'));
+app.get('/', (req, res) => res.send('axios 테스트~'));
 
 
 app.get('/api/users/register', (req, res) => res.send(requireTest.registerHello));
@@ -50,32 +51,36 @@ app.post('/api/users/register', async (req, res) => {
 });
 
 
-app.post('/api/users/login', async (req, res) => {    
+app.post('/api/users/login', async (req, res) => {
     try { //요청된 이메일이 DB에 있는지 찾기 
-        const user = await User.findOne({email: req.body.email});
+        const user = await User.findOne({ email: req.body.email });
         if (!user) return res.json({
             loginSuccess: false,
-            message: 'Try another E-mail'});
-                
+            message: 'Try another E-mail'
+        });
+
         //요청된 이메일이 DB에 있다면 비밀번호 확인
-        const isMatch = await user.comparePassword(req.body.password, 
+        const isMatch = await user.comparePassword(req.body.password,
             async (err, isMatch) => {
-            if (!isMatch) return res.json({
-                loginSuccess: false,
-                message: "Wrong Password"});
-            
-            //비밀번호 까지 맞다면 토큰을 생성하기.
-            const token = await user.generateToken((err, user) => {
-                res.cookie("x_auth", user.token)
-                .status(200)
-                .json({ 
-                    loginSuccess: true, 
-                    message: `${user.email} 로그인 되었습니다.`,
-                    userId: user._id });
+                if (!isMatch) return res.json({
+                    loginSuccess: false,
+                    message: "Wrong Password"
+                });
+
+                //비밀번호 까지 맞다면 토큰을 생성하기.
+                const token = await user.generateToken((err, user) => {
+                    res.cookie("x_auth", user.token)
+                        .status(200)
+                        .json({
+                            loginSuccess: true,
+                            message: `${user.email} 로그인 되었습니다.`,
+                            userId: user._id
+                        });
+                });
             });
-        });  
     }
-    catch (err) { return res.status(400).send(err); 
+    catch (err) {
+        return res.status(400).send(err);
     };
 });
 
@@ -107,7 +112,8 @@ app.get('/api/users/logout', auth, (req, res) => { // 로그인된 상태이므�
         .then((user) => {
             return res.status(200).json({ // 이 코드에선 send로 보내줘도 무방 (자동으로 json 반환)
                 success: true,
-                message: `${user.email} 로그아웃 되었습니다.` })
+                message: `${user.email} 로그아웃 되었습니다.`
+            })
         })
         .catch((err) => {
             // console.error(err);
