@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../_action/user_action';
 
-function LoginPage() {
+function LoginPage(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // 리다이렉션을 위해 
 
   // 서버에 보내고자 하는 값들을 이 state에 갖고있는 것
   const [Email, setEmail] = useState("") // ""는 처음 상태를 빈 string으로 하겠다는 뜻 
@@ -16,7 +18,7 @@ function LoginPage() {
   const onPasswordHandler = (event) => { // 함수 이름은 임의로 지정 가능 
     setPassword(event.currentTarget.value)
   }
-  
+
   const onSubmitHandler = (event) => { // 함수 이름은 임의로 지정 가능 
     event.preventDefault(); // 버튼 누를 때마다 페이지 refresh 되는 거 방지
 
@@ -30,29 +32,33 @@ function LoginPage() {
       password: Password
     }
 
-    dispatch(loginUser(body)) 
-
-
+    dispatch(loginUser(body))
+      .then(response => {
+        if (response.payload.loginSuccess) {
+          navigate('/')
+        } else {
+          alert('아이디 혹은 패스워드가 틀렸습니다')
+        }
+      })
+ 
   }
-  
+
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',
-    width: '100%', height: '100vh'}}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
 
-      <form style={{ display:'flex', flexDirection: 'column'}}
-      onSubmit={onSubmitHandler} > 
+      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
+
         <label>Email</label>
-        <input type='email' value={Email} onChange={onEmailHandler} /> 
-        <br />
+        <input type='email' value={Email} onChange={onEmailHandler} /> <br />
+
         <label>Password</label>
-        <input type='password' value={Password} onChange={onPasswordHandler} />
-        <br />
-        <button type="submit">
-          Login
-        </button>
+        <input type='password' value={Password} onChange={onPasswordHandler} /> <br />
+
+        <button type="submit"> Login </button>
+
       </form>
-    
+
     </div>
   )
 }
