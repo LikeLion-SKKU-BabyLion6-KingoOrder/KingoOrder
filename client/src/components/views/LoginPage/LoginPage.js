@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../_action/user_action';
+import styles from "./LoginPage.module.css"
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function LoginPage(props) {
     dispatch(loginUser(body))
       .then(response => {
         if (response.payload.loginSuccess) {
-          navigate('/')
+          navigate('/buymenu')
         } else {
           alert('아이디 혹은 패스워드가 틀렸습니다')
         }
@@ -45,17 +46,38 @@ function LoginPage(props) {
 
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
+    <div>
+      <div className={styles.page}>
+        <div className={styles.titleWrap1}>
+          킹고오더
+        </div>
+        <div className={styles.titleWrap2}>
+          이메일과 비밀번호를 입력해주세요.
+        </div>
+      </div>
 
       <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
 
-        <label>Email</label>
-        <input type='email' value={Email} onChange={onEmailHandler} /> <br />
+        <div className={styles.contentWrap}>
+          <label className={styles.inputTitle}>이메일</label><br />
+          <div className={styles.inputWrap} >
+            <input className={styles.input} type='email' value={Email} onChange={onEmailHandler} placeholder="test@gmail.com" /><br />
+          </div>
+        </div>
 
-        <label>Password</label>
-        <input type='password' value={Password} onChange={onPasswordHandler} /> <br />
+        <div className={styles.contentWrap2}>
+          <label style={{ marginTop: "26px" }} className={styles.inputTitle}>비밀번호</label><br />
+            <div className={styles.inputWrap} >
+          <input className={styles.input} type='password' value={Password} onChange={onPasswordHandler} placeholder="영문, 숫자, 특수문자 포함 8자 이상"/><br />
+          </div>
+        </div>
 
-        <button type="submit"> Login </button>
+        
+        
+            <button className={styles.bottomButton} type="submit">
+                확 인
+            </button>
+            
 
       </form>
 

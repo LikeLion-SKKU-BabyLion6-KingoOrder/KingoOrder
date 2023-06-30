@@ -1,0 +1,84 @@
+.page {
+    position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 500px;
+    padding: 0 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+    background-color: #f4f4f4;
+    z-index: -1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 507px
+}
+
+.titleWrap1 {
+    margin-left: 20px;
+    margin-top: 22px;
+    font-size: 30px;
+	font-weight: bold;
+	color: #ff8b10;
+    font-family: "Jalnan";
+}
+
+.titleWrap2 {
+    margin-left: 20px;
+    margin-top: 13px;
+    font-size: 15px;
+	font-weight: bold;
+	color: #262626;
+    font-family: "a10"
+}
+
+.contentWrap {
+    margin-top: 130px;
+    flex: 1;
+}
+
+.inputTitle {
+    margin-left: 23px;
+    font-size: 13px;
+	font-weight: 600;
+	color: #262626;
+    font-family: "a11";
+}
+
+
+.contentWrap2{
+    margin-top: 10px;
+}
+
+.input{
+    margin-left: 23px;
+    width: 80%;
+    margin-left: 20px;
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid #e2e0e0;
+}
+
+
+.input:focus-within {
+    border: 1px solid #ff8b10;
+}
+
+.bottomButton {
+    width: 90%;
+    margin-left: 20px;
+	height: 48px;
+    border: none;
+    border-radius: 64px;
+    background-color: #ff8b10;
+    color: white;
+    margin-bottom: 16px;
+    cursor: pointer;
+    margin-top: 100px;
+    font-family: "a15";
+    font-size: 15px;
+}

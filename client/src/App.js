@@ -10,28 +10,27 @@ import {
 // Link 와 Route 는 서로 상호작용하며, 라우팅을 구현
 
 // 컴포넌트들 불러오기
-import LandingPage from './components/views/LandingPage/LandingPage';
+// import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import BuyMenu from './components/views/BuyMenu/BuyMenu';
+import Menuchoose from './components/views/Menuchoose/Menuchoose'
+import Jangbaguni from './components/views/Jangbaguni/Jangbaguni';
+import Qr from "./components/views/Qr/Qr"
 
 
 
 function App() {
   return (
     <Router>
-      <div>
-        <ul> 
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">로그인 페이지</Link></li>
-          <li><Link to="/register">회원가입 페이지</Link></li>
-        </ul>
-      </div>
+
       
       <div>
         <Routes>
-          <Route exact path="/" element = {<LandingPage />} />
-          <Route exact path="/login" element = {<LoginPage />} />
-          <Route exact path="/register" element = {<RegisterPage />} />
+          <Route exact path="/" element = {<LoginPage />} />
+          <Route exact path="/buymenu" element={<BuyMenu />} />
+          <Route exact path="/menuchoose" element={<Menuchoose />} />
+          <Route exact path="/jangbaguni" element={<Jangbaguni />} />
+          <Route exact path="/fin" element={<Qr />} />
         </Routes>
       </div>
     </Router>

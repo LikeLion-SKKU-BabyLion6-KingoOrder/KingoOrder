@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "Jalnan";
+  src: url("./fonts/Jalnan.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "a10";
+  src: url("./fonts/a10.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "a11";
+  src: url("./fonts/a11.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "a12";
+  src: url("./fonts/a12.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "a13";
+  src: url("./fonts/a13.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "a15";
+  src: url("./fonts/a15.ttf") format("truetype");
+}

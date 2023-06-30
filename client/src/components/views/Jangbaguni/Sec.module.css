@@ -1,0 +1,86 @@
+.b{
+    background-color: #f0ece5;
+    z-index: -1;
+    position: fixed;
+    left: 0;
+    top: 8.5%;
+    width: 100%;
+    height: 400px;
+}
+
+.link:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.container1{
+    height: 110px;
+    width:285px;
+    background-color: rgba(255, 255, 255, 0.514);
+    margin-left: 32px;
+    margin-top: 60px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 5px 5px 4px #e6e2d8;
+}
+
+.atc{
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 110px;
+    background-color: #e0e0e0;
+    border-radius: 10px 0px 0px 10px;
+  
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  
+  .card1{
+    width: 120px;
+    height: 110px;
+    border-radius: 10px 0px 0px 10px;
+    margin-left: -2px;
+  }
+
+.m{
+    margin-top: -100px;
+    margin-left: 150px;
+    font-family: a12;
+}
+
+
+.value{
+    margin-left: 150px;
+    font-family: a15;
+    margin-top: -5px;
+
+
+}
+
+.value1{
+    margin: 10px;
+    font-family: "a12";
+    border: none;
+    border-radius: 64px;
+    background-color: #ff8b10;
+    color: white;
+    height: 18px;
+    width: 18px
+}
+
+.value2{
+    margin: 10px;
+    font-family: "a12";
+    border: none;
+    border-radius: 64px;
+    background-color: #ff8b10;
+    color: white;
+    height: 18px;
+    width: 18px
+}
+
+.sum{
+    margin-top: 280px;
+    margin-left: 25px;
+    font-family: a15;
+}

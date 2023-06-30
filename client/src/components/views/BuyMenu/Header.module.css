@@ -1,0 +1,44 @@
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f0ece5;
+    box-shadow: 0 7px 8px -2px #e6e2d8;
+    z-index: 1;
+    
+}
+
+.logout{
+    font-size: 12px;
+    margin-left: 20px;
+    float: left;
+    margin-top: 19px;
+    color: rgb(103, 103, 103);
+    font-family: "a10";
+    text-decoration: none;
+}
+
+.logout:visited{
+    text-decoration: none;
+}
+
+.main{
+    font-size: 24px;
+    margin-top: -20px;
+        margin-left: 60px;
+    float: left;
+    color: #ff8b10;
+    font-family: "Jalnan";
+    
+}
+.navigation {
+    float: right;
+    margin-right: 20px;
+    font-size:12px;
+    margin-top: 6px;
+    color: rgb(103, 103, 103);
+    font-family: "a10";
+
+}

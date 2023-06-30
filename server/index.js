@@ -5,7 +5,7 @@ const port = 4000; // 포트는 아무거나 해도 됨 (부딪히지 않으면)
 
 // 옵션 추가
 const config = require('./config/key'); //key에서 상황을 받아오기 위해
-const requireTest = require('./requireTest'); // require 테스트
+// const requireTest = require('./requireTest'); // require 테스트
 const cookieParser = require('cookie-parser'); // cookie-parser 가져오기
 const { User } = require("./models/User"); // models 파일에서 유저 모델 가져오기
 const { auth } = require("./middleware/auth"); // middleware 파일에서 auth 가져오기

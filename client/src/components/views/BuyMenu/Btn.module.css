@@ -1,0 +1,30 @@
+.btn{
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 435px;
+    background-color: #ff8b10;
+    border-radius: 10px 10px 0px 0px;
+    height:55px;
+    width:100%
+}
+
+.btn1{
+    margin-left:10px;
+    font-size: 13px;
+    margin-left: 18px;
+    padding: 3px;
+    margin-top: 20px;
+    float: left;
+    color: white;
+    font-family: "a11";
+}
+
+.line{
+    background-color: rgb(148, 148, 148);
+    height: 35px;
+    width: 0.5px;
+    margin-left: 18px;
+    float: left;
+    margin-top: 13px;
+}

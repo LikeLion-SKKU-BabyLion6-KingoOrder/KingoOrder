@@ -1,0 +1,29 @@
+.b1{
+    width: 40%;
+	height: 38px;
+    border: none;
+    border-radius: 64px;
+    background-color: #ff8b10;
+    color: white;
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-family: "a15";
+    font-size: 15px;
+    margin-left: 30px;
+    margin-top: 105px;
+
+}
+
+.b2{
+    width: 40%;
+	height: 38px;
+    border: none;
+    border-radius: 64px;
+    background-color: #ff8b10;
+    color: white;
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-family: "a15";
+    font-size: 15px;
+    margin-left: 15px;
+}

@@ -17,21 +17,6 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         minlength: 5
-    },
-    lastname: {
-        type: String,
-        maxlength: 50
-    },
-    role: { // 해당 유저가 관리자? 일반 유저? 
-        type: Number, // ex) number가 0이면 일반, 1면 관리자
-        default: 0 // 임의로 role을 지정하지 않으면 role=0
-    },
-    image: String,
-    token: { // 토큰을 이용해서 나중에 유효성 등 관리
-        type: String
-    },
-    tokenExp: { // 토큰 유효기간
-        type: Number
     }
 })
 
